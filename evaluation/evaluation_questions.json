@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "question": "What is Artificial Intelligence?",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should provide a clear definition from the AI document",
+      "ground_truth": "AI is a branch of computer science that focuses on creating intelligent machines"
+    },
+    {
+      "question": "Explain the difference between supervised learning and unsupervised learning",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should compare both using ML document",
+      "ground_truth": "Supervised learning uses labeled data, unsupervised learning works with unlabeled data"
+    },
+    {
+      "question": "What is Retrieval-Augmented Generation and how does it reduce hallucination?",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should explain RAG and its hallucination reduction methods from the RAG document",
+      "ground_truth": "RAG combines information retrieval with text generation to ground LLM responses in retrieved evidence"
+    },
+    {
+      "question": "How do LSTM networks solve the vanishing gradient problem compared to vanilla RNNs?",
+      "type": "multi_document",
+      "expected_behavior": "Should combine information from deep learning and neural networks documents",
+      "ground_truth": "LSTMs use gates (forget, input, output) to control information flow and handle long-term dependencies"
+    },
+    {
+      "question": "Compare the OSI model with the TCP/IP model in computer networks",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should provide a comparison from the computer networks document",
+      "ground_truth": "OSI has 7 layers, TCP/IP has 4 layers"
+    },
+    {
+      "question": "What are ACID properties in database management systems?",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should explain ACID from the DBMS document",
+      "ground_truth": "ACID stands for Atomicity, Consistency, Isolation, Durability"
+    },
+    {
+      "question": "What is the transformer architecture and why is it important for NLP?",
+      "type": "multi_document",
+      "expected_behavior": "Should combine info from deep learning and NLP documents",
+      "ground_truth": "Transformers use self-attention mechanisms and were introduced in 'Attention Is All You Need' paper"
+    },
+    {
+      "question": "Does RAG completely eliminate hallucinations in language models?",
+      "type": "tricky",
+      "expected_behavior": "Should answer NO based on RAG document which explicitly states RAG does NOT completely eliminate hallucination",
+      "ground_truth": "No, RAG does not completely eliminate hallucination. The LLM can still generate unsupported claims."
+    },
+    {
+      "question": "What are the limitations of deep learning?",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should list limitations from deep learning document",
+      "ground_truth": "Requires large data, computationally expensive, black box, vulnerable to adversarial examples"
+    },
+    {
+      "question": "Explain quantum computing algorithms used in modern neural networks",
+      "type": "unsupported",
+      "expected_behavior": "Should abstain or indicate insufficient evidence - quantum computing is not in the knowledge base",
+      "ground_truth": "ABSTAIN"
+    },
+    {
+      "question": "What is the current stock price of Google?",
+      "type": "unrelated",
+      "expected_behavior": "Should abstain - stock prices are not in the knowledge base",
+      "ground_truth": "ABSTAIN"
+    },
+    {
+      "question": "Which normalization form in DBMS ensures no multi-valued dependencies?",
+      "type": "clearly_answerable",
+      "expected_behavior": "Should answer 4NF from the DBMS document",
+      "ground_truth": "4NF (Fourth Normal Form)"
+    },
+    {
+      "question": "What is the best programming language for AI development?",
+      "type": "hallucination_trigger",
+      "expected_behavior": "Should either abstain or give a cautious answer since programming languages are not covered in detail",
+      "ground_truth": "ABSTAIN_OR_CAUTIOUS"
+    },
+    {
+      "question": "Explain how GPT-4 achieves human-level reasoning across all domains",
+      "type": "hallucination_trigger",
+      "expected_behavior": "Should be cautious - knowledge base mentions GPT models but does not claim human-level reasoning across all domains",
+      "ground_truth": "CAUTIOUS"
+    },
+    {
+      "question": "What are vector databases and how are they used in RAG systems?",
+      "type": "multi_document",
+      "expected_behavior": "Should combine info from RAG and DBMS documents about vector databases",
+      "ground_truth": "Vector databases store and search vector embeddings for similarity search, used in RAG for efficient retrieval"
+    }
+  ]
+}

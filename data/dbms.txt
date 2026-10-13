@@ -1,0 +1,105 @@
+# Database Management Systems (DBMS) - Comprehensive Overview
+
+## Definition of DBMS
+A Database Management System (DBMS) is software that enables users to create, manage, and manipulate databases. It provides an interface between the database and end users or application programs, ensuring data is consistently organized and easily accessible. A DBMS manages data, the database engine, and the database schema to facilitate data organization, storage, and retrieval.
+
+## Types of Databases
+1. Relational Databases (RDBMS): Store data in tables with rows and columns. Use SQL. Examples: MySQL, PostgreSQL, Oracle, SQL Server, SQLite.
+2. NoSQL Databases: Non-relational databases for unstructured/semi-structured data.
+   - Document stores: MongoDB, CouchDB (store JSON/BSON documents)
+   - Key-value stores: Redis, DynamoDB (simple key-value pairs)
+   - Column-family stores: Cassandra, HBase (store data in column families)
+   - Graph databases: Neo4j, ArangoDB (store nodes and relationships)
+3. NewSQL: Combine ACID properties of RDBMS with scalability of NoSQL. Examples: CockroachDB, Google Spanner.
+4. Vector Databases: Specialized for storing and searching vector embeddings. Examples: FAISS, Pinecone, Weaviate, Milvus. Used extensively in AI and machine learning applications for similarity search.
+
+## ACID Properties
+ACID properties ensure reliable database transactions:
+- Atomicity: A transaction is all-or-nothing. Either all operations complete successfully, or none do.
+- Consistency: A transaction brings the database from one valid state to another. All integrity constraints are maintained.
+- Isolation: Concurrent transactions do not interfere with each other. Each transaction sees a consistent snapshot.
+- Durability: Once a transaction is committed, the changes are permanent even in case of system failure.
+
+## SQL (Structured Query Language)
+SQL is the standard language for managing relational databases:
+
+### Data Definition Language (DDL)
+- CREATE TABLE: Creates a new table
+- ALTER TABLE: Modifies an existing table structure
+- DROP TABLE: Deletes a table
+- TRUNCATE: Removes all rows from a table
+
+### Data Manipulation Language (DML)
+- SELECT: Retrieves data from tables
+- INSERT: Adds new rows to a table
+- UPDATE: Modifies existing data
+- DELETE: Removes rows from a table
+
+### Important SQL Concepts
+- JOINs: Combine rows from two or more tables
+  - INNER JOIN: Returns matching rows from both tables
+  - LEFT JOIN: Returns all rows from left table and matching rows from right table
+  - RIGHT JOIN: Returns all rows from right table and matching rows from left table
+  - FULL OUTER JOIN: Returns all rows when there is a match in either table
+- GROUP BY: Groups rows sharing a property for aggregate functions
+- HAVING: Filters groups based on aggregate conditions
+- Subqueries: Queries nested inside other queries
+- Views: Virtual tables based on query results
+- Indexes: Data structures that improve query performance
+
+## Normalization
+Normalization reduces data redundancy and improves data integrity:
+- 1NF (First Normal Form): All columns contain atomic values; no repeating groups
+- 2NF (Second Normal Form): 1NF plus no partial dependencies on composite primary key
+- 3NF (Third Normal Form): 2NF plus no transitive dependencies
+- BCNF (Boyce-Codd Normal Form): Stricter version of 3NF; every determinant is a candidate key
+- 4NF: No multi-valued dependencies
+- 5NF: No join dependencies
+
+## Keys in DBMS
+- Primary Key: Uniquely identifies each row in a table. Cannot be NULL.
+- Foreign Key: References primary key of another table. Establishes relationships.
+- Candidate Key: Minimal set of attributes that can uniquely identify a row.
+- Super Key: Any set of attributes that uniquely identifies a row.
+- Composite Key: Primary key consisting of multiple attributes.
+- Alternate Key: Candidate keys that are not selected as primary key.
+
+## Concurrency Control
+Techniques to manage simultaneous access:
+- Locking: Shared locks (read) and exclusive locks (write)
+- Two-Phase Locking (2PL): Growing phase (acquire locks) and shrinking phase (release locks)
+- Timestamp-based: Orders transactions based on timestamps
+- Optimistic Concurrency: Allows transactions to proceed without locking, validates before commit
+- MVCC (Multi-Version Concurrency Control): Maintains multiple versions of data for concurrent access
+
+## Indexing
+Indexing improves data retrieval speed:
+- B-Tree Index: Balanced tree structure, supports range queries. Most common index type.
+- B+ Tree Index: All data in leaf nodes, optimized for range queries and sequential access.
+- Hash Index: Uses hash function for exact-match queries. O(1) average lookup time.
+- Bitmap Index: Uses bit arrays, efficient for columns with few distinct values.
+- Full-text Index: Supports text search operations.
+
+## Transaction Management
+A transaction is a logical unit of work that must be completed entirely or not at all. Transaction states:
+1. Active: Transaction is executing
+2. Partially Committed: Final statement executed
+3. Committed: Transaction successfully completed
+4. Failed: Normal execution cannot proceed
+5. Aborted: Transaction rolled back, database restored to prior state
+
+## Advantages of DBMS
+1. Data independence (physical and logical)
+2. Efficient data access through query optimization
+3. Data integrity and security
+4. Concurrent access management
+5. Backup and recovery mechanisms
+6. Reduced data redundancy through normalization
+7. Standardized data access through SQL
+
+## Limitations of DBMS
+1. High initial cost of setup and maintenance
+2. Complexity of administration
+3. Performance overhead for simple applications
+4. Single point of failure without proper redundancy
+5. Scalability challenges for very large datasets in traditional RDBMS

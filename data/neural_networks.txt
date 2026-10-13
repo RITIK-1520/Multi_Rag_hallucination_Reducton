@@ -1,0 +1,87 @@
+# Neural Networks - Comprehensive Overview
+
+## Definition of Neural Networks
+An Artificial Neural Network (ANN) is a computational model inspired by the structure and function of biological neural networks in the human brain. It consists of interconnected nodes (neurons) organized in layers that process information using connectionist approaches. Neural networks are the foundation of deep learning and are used for pattern recognition, classification, regression, and many other tasks.
+
+## Structure of a Neural Network
+A neural network has three types of layers:
+1. Input Layer: Receives the raw input data. Each node represents one feature of the input. The input layer does not perform any computation.
+2. Hidden Layers: Intermediate layers that perform computations. Each neuron applies weights, bias, and an activation function. A network can have one or many hidden layers.
+3. Output Layer: Produces the final output. The number of output neurons depends on the task (1 for binary classification, N for N-class classification).
+
+## How a Neuron Works
+Each artificial neuron performs the following computation:
+1. Receives inputs (x1, x2, ..., xn) from previous layer or input data
+2. Multiplies each input by its corresponding weight (w1, w2, ..., wn)
+3. Sums all weighted inputs: z = w1*x1 + w2*x2 + ... + wn*xn + b (where b is bias)
+4. Applies an activation function: output = f(z)
+
+## Activation Functions
+Activation functions introduce non-linearity into neural networks:
+- Sigmoid: f(x) = 1/(1+e^(-x)). Output range (0,1). Used in output layer for binary classification. Suffers from vanishing gradient problem.
+- Tanh: f(x) = (e^x - e^(-x))/(e^x + e^(-x)). Output range (-1,1). Zero-centered, better than sigmoid for hidden layers.
+- ReLU (Rectified Linear Unit): f(x) = max(0, x). Most popular for hidden layers. Computationally efficient. Can suffer from "dying ReLU" problem where neurons output zero for all inputs.
+- Leaky ReLU: f(x) = max(0.01x, x). Addresses dying ReLU by allowing small negative values.
+- Softmax: Converts outputs to probability distribution. Used in output layer for multi-class classification. All outputs sum to 1.
+- GELU (Gaussian Error Linear Unit): Used in transformer models like BERT. Smoother than ReLU.
+
+## Types of Neural Networks
+1. Feedforward Neural Networks (FNN): Information flows in one direction from input to output. No cycles. Simplest type.
+2. Convolutional Neural Networks (CNN): Specialized for grid-like data (images). Use convolutional filters.
+3. Recurrent Neural Networks (RNN): Have connections that form cycles, allowing them to maintain memory of previous inputs.
+4. Long Short-Term Memory (LSTM): Special RNN with gates to handle long-term dependencies.
+5. Generative Adversarial Networks (GAN): Two networks (generator and discriminator) trained adversarially.
+6. Autoencoders: Learn compressed representations of data through encoding and decoding.
+7. Transformer Networks: Use self-attention mechanisms instead of recurrence. Foundation of modern NLP.
+8. Graph Neural Networks (GNN): Process graph-structured data.
+
+## Training Process
+Neural network training involves:
+1. Initialization: Weights are randomly initialized (Xavier, He initialization)
+2. Forward Propagation: Input passes through network to produce output
+3. Loss Calculation: Difference between predicted and actual output is computed
+4. Backpropagation: Gradients are computed using chain rule
+5. Weight Update: Weights are adjusted using an optimizer
+6. Iteration: Steps 2-5 repeat for many epochs until convergence
+
+## Common Loss Functions
+- Mean Squared Error (MSE): For regression tasks. MSE = (1/n) * Σ(y_actual - y_predicted)²
+- Binary Cross-Entropy: For binary classification. Loss = -[y*log(p) + (1-y)*log(1-p)]
+- Categorical Cross-Entropy: For multi-class classification
+- Huber Loss: Combines MSE and MAE, robust to outliers
+
+## Optimizers
+- Stochastic Gradient Descent (SGD): Updates weights using gradient of a random mini-batch
+- Momentum: Accelerates SGD by accumulating past gradients
+- Adam (Adaptive Moment Estimation): Combines momentum and RMSProp. Most popular optimizer. Uses adaptive learning rates for each parameter.
+- RMSProp: Adapts learning rate based on recent gradient magnitudes
+- AdaGrad: Adapts learning rate based on historical gradient accumulation
+
+## Regularization Techniques
+- Dropout: Randomly deactivates neurons during training with probability p (typically 0.2-0.5)
+- L1 Regularization (Lasso): Adds absolute value of weights to loss function. Promotes sparsity.
+- L2 Regularization (Ridge/Weight Decay): Adds squared weights to loss function. Prevents large weights.
+- Batch Normalization: Normalizes layer inputs to have zero mean and unit variance
+- Early Stopping: Stops training when validation loss stops improving
+- Data Augmentation: Artificially increases training data size through transformations
+
+## Hyperparameters
+Key hyperparameters in neural networks:
+- Learning rate: Controls step size during optimization (typically 0.001 to 0.01)
+- Batch size: Number of samples per gradient update (common values: 32, 64, 128, 256)
+- Number of epochs: How many times the entire dataset is passed through the network
+- Number of hidden layers: Depth of the network
+- Number of neurons per layer: Width of the network
+- Dropout rate: Probability of neuron deactivation
+- Weight initialization method
+- Optimizer choice and its parameters
+
+## Limitations of Neural Networks
+1. Require large amounts of training data
+2. Computationally expensive to train
+3. Black-box nature makes interpretation difficult
+4. Prone to overfitting without proper regularization
+5. Sensitive to hyperparameter choices
+6. Vulnerable to adversarial attacks
+7. Training can be unstable (vanishing/exploding gradients)
+8. May not generalize well to out-of-distribution data

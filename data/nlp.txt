@@ -1,0 +1,78 @@
+# Natural Language Processing - Comprehensive Overview
+
+## Definition of Natural Language Processing
+Natural Language Processing (NLP) is a subfield of Artificial Intelligence and Linguistics that focuses on enabling computers to understand, interpret, generate, and interact with human language. NLP combines computational linguistics with statistical, machine learning, and deep learning models to process and analyze large amounts of natural language data.
+
+## Core NLP Tasks
+
+### Text Preprocessing
+Text preprocessing is the first step in any NLP pipeline. It includes:
+- Tokenization: Splitting text into individual words or subwords (tokens). Word-level tokenization splits on spaces and punctuation. Subword tokenization (BPE, WordPiece, SentencePiece) handles unknown words by breaking them into smaller units.
+- Lowercasing: Converting all text to lowercase for consistency
+- Stop Word Removal: Removing common words (the, is, at, which) that carry little meaning
+- Stemming: Reducing words to their root form (running → run) using rules (Porter Stemmer, Snowball Stemmer)
+- Lemmatization: Reducing words to their dictionary form using vocabulary and morphological analysis (better → good)
+- Punctuation and Special Character Removal
+- Text Normalization: Handling abbreviations, contractions, and spelling variations
+
+### Text Representation
+Methods for converting text to numerical representations:
+- Bag of Words (BoW): Represents text as a vector of word frequencies, ignoring word order
+- TF-IDF (Term Frequency-Inverse Document Frequency): Weighs word importance based on frequency in a document relative to the corpus. TF-IDF = TF(t,d) × IDF(t), where IDF(t) = log(N/df(t))
+- Word Embeddings: Dense vector representations that capture semantic relationships
+  - Word2Vec: Learns embeddings using Skip-gram or CBOW architectures (Mikolov et al., 2013)
+  - GloVe: Global Vectors for Word Representation based on word co-occurrence statistics (Pennington et al., 2014)
+  - FastText: Extends Word2Vec by representing words as bags of character n-grams (Facebook, 2016)
+- Contextual Embeddings: Representations that vary based on context (ELMo, BERT embeddings)
+- Sentence Embeddings: Dense representations of entire sentences (Sentence-BERT, Universal Sentence Encoder)
+
+### Named Entity Recognition (NER)
+NER identifies and classifies named entities in text into predefined categories such as person names, organizations, locations, dates, monetary values, and percentages. Modern NER systems use deep learning models like BiLSTM-CRF and transformer-based models.
+
+### Sentiment Analysis
+Sentiment analysis determines the emotional tone or opinion expressed in text. It can be binary (positive/negative), multi-class (positive/negative/neutral), or fine-grained (1-5 scale). Applications include product review analysis, social media monitoring, and customer feedback analysis.
+
+### Machine Translation
+Machine translation automatically translates text from one language to another. Modern approaches use neural machine translation (NMT) with encoder-decoder architectures and attention mechanisms. Google Translate uses a transformer-based model for translation.
+
+### Text Summarization
+Text summarization creates a concise version of a longer document. Two approaches:
+- Extractive: Selects important sentences from the original text
+- Abstractive: Generates new sentences that capture the key information (more challenging, uses sequence-to-sequence models)
+
+### Question Answering
+Question answering systems find answers to questions from a given context or knowledge base. Types include:
+- Extractive QA: Extracts answer spans from context (SQuAD benchmark)
+- Generative QA: Generates answers using language models
+- Open-domain QA: Answers questions using large knowledge bases or retrieved documents
+
+## Pre-trained Language Models
+
+### BERT (Bidirectional Encoder Representations from Transformers)
+BERT was developed by Google in 2018. It uses bidirectional training of transformers to understand context from both left and right. BERT is pre-trained on two tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP). BERT-base has 110 million parameters and BERT-large has 340 million parameters.
+
+### GPT (Generative Pre-trained Transformer)
+GPT series by OpenAI uses unidirectional (left-to-right) transformer decoders. GPT-2 has 1.5 billion parameters, GPT-3 has 175 billion parameters, and GPT-4 is a multimodal model. GPT models excel at text generation and can perform various tasks through prompting.
+
+### T5 (Text-to-Text Transfer Transformer)
+T5 by Google converts all NLP tasks into a text-to-text format. It uses an encoder-decoder transformer architecture and is pre-trained on the C4 dataset.
+
+## Challenges in NLP
+1. Ambiguity in natural language (lexical, syntactic, semantic)
+2. Sarcasm and irony detection
+3. Low-resource languages with limited training data
+4. Domain adaptation across specialized fields
+5. Bias in language models reflecting training data biases
+6. Hallucination in language model outputs
+7. Long document understanding
+8. Multilingual and cross-lingual processing
+9. Computational cost of large language models
+10. Evaluation challenges for generative tasks
+
+## NLP Evaluation Metrics
+- BLEU: Measures n-gram overlap for machine translation
+- ROUGE: Measures recall-oriented overlap for summarization
+- METEOR: Considers synonyms and paraphrases for translation
+- Perplexity: Measures how well a language model predicts text
+- F1-Score: Used for NER, QA, and classification tasks
+- Human Evaluation: Still the gold standard for many generative tasks

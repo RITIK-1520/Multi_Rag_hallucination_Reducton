@@ -1,0 +1,72 @@
+# Computer Networks - Comprehensive Overview
+
+## Definition of Computer Networks
+A computer network is a collection of interconnected computing devices that can share resources and communicate with each other. Networks enable data exchange between computers, servers, and other devices through wired or wireless connections using standardized communication protocols. The Internet is the largest computer network in the world.
+
+## Types of Computer Networks
+1. LAN (Local Area Network): Covers a small geographical area like a building or campus. High speed (100 Mbps to 10 Gbps). Low latency. Examples: office network, university lab network.
+2. WAN (Wide Area Network): Covers a large geographical area, spanning cities, countries, or continents. The Internet is the largest WAN. Lower speed than LAN. Higher latency.
+3. MAN (Metropolitan Area Network): Covers a city or metropolitan area. Larger than LAN but smaller than WAN. Example: cable TV network in a city.
+4. PAN (Personal Area Network): Very small range (within a few meters). Examples: Bluetooth connections, USB connections.
+5. VPN (Virtual Private Network): Creates a secure encrypted connection over a public network. Used for remote access and privacy.
+
+## OSI Model (Open Systems Interconnection)
+The OSI model is a conceptual framework with 7 layers that describes how network communication works:
+
+### Layer 7 - Application Layer
+Provides network services directly to end-user applications. Protocols: HTTP, HTTPS, FTP, SMTP, DNS, DHCP, SSH, Telnet. This is where web browsers, email clients, and other applications operate.
+
+### Layer 6 - Presentation Layer
+Handles data format translation, encryption, and compression. Converts data between application format and network format. Examples: SSL/TLS encryption, JPEG compression, ASCII/Unicode encoding.
+
+### Layer 5 - Session Layer
+Manages sessions (connections) between applications. Handles session establishment, maintenance, and termination. Examples: NetBIOS, RPC.
+
+### Layer 4 - Transport Layer
+Provides end-to-end communication between processes. Key protocols:
+- TCP (Transmission Control Protocol): Connection-oriented, reliable, ordered delivery. Uses three-way handshake (SYN, SYN-ACK, ACK). Flow control and congestion control. Used by HTTP, FTP, SMTP.
+- UDP (User Datagram Protocol): Connectionless, unreliable, no guaranteed ordering. Faster than TCP, lower overhead. Used by DNS, streaming, VoIP, online gaming.
+
+### Layer 3 - Network Layer
+Handles logical addressing and routing. Key protocol: IP (Internet Protocol). IPv4 uses 32-bit addresses (e.g., 192.168.1.1). IPv6 uses 128-bit addresses. Routers operate at this layer. Routing algorithms: RIP, OSPF, BGP.
+
+### Layer 2 - Data Link Layer
+Handles physical addressing (MAC addresses) and frame transmission. Divided into LLC (Logical Link Control) and MAC (Media Access Control) sublayers. Switches operate at this layer. Protocols: Ethernet, Wi-Fi (802.11), PPP.
+
+### Layer 1 - Physical Layer
+Deals with the physical transmission of raw bits over a communication channel. Defines electrical, optical, and mechanical specifications. Media: copper cables, fiber optic cables, wireless signals.
+
+## TCP/IP Model
+The TCP/IP model is a simplified 4-layer model used in practice:
+1. Application Layer (combines OSI layers 5-7)
+2. Transport Layer (same as OSI layer 4)
+3. Internet Layer (same as OSI layer 3)
+4. Network Access Layer (combines OSI layers 1-2)
+
+## IP Addressing
+- IPv4: 32-bit address written as four octets (e.g., 192.168.1.100). Supports approximately 4.3 billion addresses.
+- IPv6: 128-bit address written in hexadecimal groups (e.g., 2001:0db8:85a3::8a2e:0370:7334). Supports 3.4 × 10^38 addresses.
+- Subnetting: Dividing a network into smaller sub-networks using subnet masks.
+- CIDR (Classless Inter-Domain Routing): Modern IP addressing method replacing classful addressing.
+
+## Network Security
+- Firewalls: Monitor and filter incoming and outgoing network traffic based on security rules
+- Encryption: Encoding data so only authorized parties can read it (AES, RSA, TLS)
+- Authentication: Verifying identity of users and devices
+- IDS/IPS: Intrusion Detection/Prevention Systems monitor for suspicious activity
+- DDoS Protection: Defending against Distributed Denial of Service attacks
+
+## Network Topologies
+- Bus: All devices share a single communication line
+- Star: All devices connect to a central hub/switch (most common in LANs)
+- Ring: Devices form a circular chain
+- Mesh: Every device connects to every other device (full mesh) or some devices (partial mesh)
+- Tree: Hierarchical combination of star and bus topologies
+
+## Key Network Devices
+- Router: Connects different networks and forwards packets based on IP addresses
+- Switch: Connects devices within a network and forwards frames based on MAC addresses
+- Hub: Simple device that broadcasts data to all connected devices (largely obsolete)
+- Modem: Converts digital signals to analog and vice versa for transmission
+- Access Point: Provides wireless network connectivity
+- Load Balancer: Distributes network traffic across multiple servers

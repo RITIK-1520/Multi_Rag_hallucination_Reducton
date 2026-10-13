@@ -1,0 +1,111 @@
+# Retrieval-Augmented Generation (RAG) - Comprehensive Overview
+
+## Definition of RAG
+Retrieval-Augmented Generation (RAG) is a technique that enhances Large Language Model (LLM) outputs by combining information retrieval with text generation. Instead of relying solely on the knowledge stored in the model's parameters during training, RAG retrieves relevant documents from an external knowledge base and uses them as context for generating responses. The RAG framework was introduced by Lewis et al. in 2020 in the paper "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks."
+
+## How RAG Works
+The RAG pipeline consists of three main stages:
+
+### Stage 1: Indexing
+Documents are preprocessed and stored in a searchable format:
+1. Document collection: Gathering relevant documents from various sources
+2. Document chunking: Splitting documents into smaller, manageable pieces (typically 100-500 tokens)
+3. Embedding generation: Converting text chunks into dense vector representations using embedding models
+4. Vector storage: Storing embeddings in a vector database for efficient similarity search
+
+### Stage 2: Retrieval
+When a user query arrives:
+1. The query is converted into an embedding using the same embedding model
+2. Similarity search is performed against the vector database
+3. Top-K most similar document chunks are retrieved
+4. Retrieved chunks are ranked by relevance score
+
+### Stage 3: Generation
+The retrieved context is combined with the query:
+1. A prompt is constructed containing the user query and retrieved context
+2. The prompt is sent to the LLM
+3. The LLM generates a response grounded in the provided context
+4. The response may include citations or references to source documents
+
+## Components of a RAG System
+
+### Embedding Models
+Embedding models convert text into dense vector representations. Popular choices include:
+- Sentence-BERT (SBERT): Fine-tuned BERT for sentence embeddings
+- OpenAI text-embedding-ada-002: Commercial embedding model
+- all-MiniLM-L6-v2: Lightweight and efficient sentence transformer model
+- BGE (BAAI General Embedding): High-performance open-source embeddings
+- E5: Embeddings from bidirectional encoder representations
+
+### Vector Databases
+Vector databases store and index embeddings for efficient similarity search:
+- FAISS (Facebook AI Similarity Search): Open-source library for efficient similarity search and clustering of dense vectors. Supports various index types including Flat, IVF, HNSW.
+- Pinecone: Managed vector database service
+- Weaviate: Open-source vector search engine
+- Chroma: Lightweight open-source embedding database
+- Milvus: Open-source vector database for scalable similarity search
+- Qdrant: Vector similarity search engine
+
+### Similarity Metrics
+Common similarity metrics for vector search:
+- Cosine Similarity: Measures the cosine of the angle between vectors. Range [-1, 1], higher is more similar. Most commonly used for text embeddings.
+- Euclidean Distance (L2): Measures straight-line distance between vectors. Lower is more similar.
+- Dot Product (Inner Product): Measures alignment of vectors. Higher is more similar.
+
+## Advantages of RAG
+1. Reduces hallucination by grounding responses in retrieved evidence
+2. Allows access to up-to-date information beyond the model's training cutoff
+3. Provides source attribution and traceability
+4. More cost-effective than fine-tuning for knowledge updates
+5. Enables domain-specific knowledge without retraining
+6. Improves factual accuracy of LLM responses
+7. Allows knowledge base updates without model retraining
+8. Supports privacy by keeping sensitive data in controlled retrieval systems
+
+## Limitations of RAG
+1. Quality depends on the knowledge base coverage and quality
+2. Retrieval errors propagate to generation (garbage in, garbage out)
+3. Chunking strategy significantly affects retrieval quality
+4. Embedding models may not capture domain-specific semantics well
+5. RAG does NOT completely eliminate hallucination - the LLM can still generate unsupported claims
+6. Performance depends on the quality of the embedding model
+7. Latency increases due to the retrieval step
+8. Context window limitations restrict the amount of retrieved information that can be used
+9. The system may retrieve relevant-looking but actually irrelevant documents
+10. RAG cannot reason about information not present in the knowledge base
+
+## Hallucination in RAG Systems
+Despite using retrieved context, RAG systems can still hallucinate in several ways:
+- Intrinsic hallucination: Generating information that contradicts the retrieved evidence
+- Extrinsic hallucination: Adding information not present in the retrieved evidence
+- Partial hallucination: Mixing factual retrieved information with fabricated details
+- Misattribution: Attributing information to the wrong source
+
+Methods to reduce hallucination in RAG:
+1. Evidence verification: Checking if generated claims are supported by retrieved evidence
+2. Multi-agent verification: Using multiple agents to cross-check generated responses
+3. Confidence scoring: Assigning confidence levels to generated claims
+4. Abstention: Refusing to answer when evidence is insufficient
+5. Iterative refinement: Regenerating answers when hallucination is detected
+6. Claim-level verification: Breaking responses into individual claims and verifying each
+
+## Advanced RAG Techniques
+- Multi-query RAG: Generating multiple search queries from a single user query
+- Hypothetical Document Embeddings (HyDE): Generating hypothetical answers and using them for retrieval
+- Re-ranking: Using cross-encoder models to re-rank retrieved documents
+- Query decomposition: Breaking complex queries into simpler sub-queries
+- Recursive retrieval: Iteratively retrieving more context based on initial results
+- Self-RAG: Models that adaptively retrieve and evaluate their own outputs
+- Corrective RAG (CRAG): Systems that evaluate and correct retrieved documents before generation
+
+## RAG vs Fine-tuning
+RAG and fine-tuning are complementary approaches:
+- RAG: Better for frequently changing knowledge, factual grounding, and source attribution
+- Fine-tuning: Better for learning specific styles, formats, or domain-specific reasoning patterns
+- Hybrid approaches: Combining both for optimal performance
+
+## Evaluation of RAG Systems
+Key metrics for evaluating RAG systems:
+- Retrieval metrics: Precision@K, Recall@K, Mean Reciprocal Rank (MRR), NDCG
+- Generation metrics: Faithfulness (how well the answer reflects retrieved evidence), Relevancy (how well the answer addresses the query), Groundedness (whether claims are supported by evidence)
+- End-to-end metrics: Answer accuracy, hallucination rate, abstention rate
