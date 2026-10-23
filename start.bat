@@ -4,5 +4,5 @@ echo ========================================================
 echo   Launching BNS Legal Intelligence (React + FastAPI)
 echo   Running Together on http://127.0.0.1:8000
 echo ========================================================
-python run.py
+python app.py
 pause
