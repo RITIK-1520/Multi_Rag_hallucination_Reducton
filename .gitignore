@@ -16,6 +16,10 @@ venv/
 .venv/
 env/
 
+# Generated vector index (rebuilt automatically from included sources)
+faiss_index/
+*.faiss
+
 # Node
 node_modules/
 frontend/node_modules/
@@ -28,6 +32,6 @@ frontend/node_modules/
 .DS_Store
 Thumbs.db
 
-# Generated local files
+# Test and coverage caches
 .pytest_cache/
 .coverage
