@@ -102,7 +102,7 @@ The generated `faiss_index/` directory is intentionally not committed. The appli
    python app.py
    ```
 
-   Or run `start.bat` after dependencies are installed. Open **http://127.0.0.1:8000**. FastAPI API documentation is available at **http://127.0.0.1:8000/docs**.
+   Or double-click `start.bat`: it creates a Python virtual environment, installs backend dependencies, and builds the React UI if Node.js/npm are available and the build is missing. Open **http://127.0.0.1:8000**. FastAPI API documentation is available at **http://127.0.0.1:8000/docs**.
 
 On the first start, the app reads `Final_BNS.pdf` (when PDF text extraction is available) and `data/*.txt`, creates chunks, downloads/loads the Sentence Transformers embedding model, and writes the local FAISS index and metadata to `faiss_index/`. This initial step may take a few minutes. Subsequent starts reuse the generated index.
 
