@@ -1,32 +1,33 @@
-# Environment
+# Secrets
 .env
+.env.*
+!.env.example
 
 # Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.egg-info/
-dist/
 build/
 *.egg
 
-# Virtual environment
+# Virtual environments
 venv/
 .venv/
 env/
 
-# IDE
+# Node
+node_modules/
+frontend/node_modules/
+
+# IDE / OS
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
 
-# FAISS index (regenerable)
-faiss_index/
-
-# Outputs (optional - can be regenerated)
-# outputs/
+# Generated local files
+.pytest_cache/
+.coverage
