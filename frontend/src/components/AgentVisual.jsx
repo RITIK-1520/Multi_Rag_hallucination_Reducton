@@ -1,25 +1,37 @@
 import React from 'react';
 
-const agents = [
-  { name: 'Query Analyzer', icon: '⌕' },
-  { name: 'Retriever', icon: '⌘' },
-  { name: 'Evidence Verifier', icon: '✓' },
-  { name: 'Answer Generator', icon: '✧' },
-  { name: 'Hallucination Critic', icon: '◎' },
-];
-
 export default function AgentVisual({ isProcessing = false }) {
+  const agents = [
+    { icon: '🧠', label: 'Analyzer', color: '#6366f1' },
+    { icon: '🔎', label: 'Retriever', color: '#06b6d4' },
+    { icon: '🛡️', label: 'Verifier', color: '#10b981' },
+    { icon: '✍️', label: 'Generator', color: '#f59e0b' },
+    { icon: '⚖️', label: 'Critic', color: '#f43f5e' },
+  ];
+
   return (
-    <section className={`agent-visual ${isProcessing ? 'is-processing' : ''}`} aria-label="Multi-agent pipeline">
-      {agents.map((agent, index) => (
-        <React.Fragment key={agent.name}>
-          <div className="agent-visual-node">
-            <span className="agent-visual-icon" aria-hidden="true">{agent.icon}</span>
-            <span>{agent.name}</span>
-          </div>
-          {index < agents.length - 1 && <span className="agent-visual-link" aria-hidden="true">→</span>}
-        </React.Fragment>
-      ))}
-    </section>
+    <div className="agent-visual-card">
+      <div className="agent-visual-hud">
+        <span className="hud-pill">✦ 5-AGENT PIPELINE · BNS CODEX</span>
+        <span className="hud-hint">{isProcessing ? '⚡ Processing...' : '● Ready'}</span>
+      </div>
+      <div className={`agent-flow-row ${isProcessing ? 'processing' : ''}`}>
+        {agents.map((a, i) => (
+          <React.Fragment key={i}>
+            <div className="agent-dot" style={{ '--agent-color': a.color, animationDelay: `${i * 0.15}s` }}>
+              <span className="agent-dot-icon">{a.icon}</span>
+              <span className="agent-dot-label">{a.label}</span>
+              <div className="agent-dot-ring" />
+            </div>
+            {i < agents.length - 1 && <div className="agent-connector"><div className="connector-pulse" /></div>}
+          </React.Fragment>
+        ))}
+      </div>
+      <div className="agent-visual-stats">
+        <span>📚 Knowledge Chunks</span>
+        <span>🤖 5 AI Agents</span>
+        <span>🛡️ Evidence-first checks</span>
+      </div>
+    </div>
   );
 }
